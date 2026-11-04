@@ -350,13 +350,13 @@ function Trabalhos() {
         <div className="mt-12 grid gap-5 md:grid-cols-12">
           <Reveal className="md:col-span-5">
             <figure>
-              <Placeholder label="Condensadora Hisense instalada (foto real)" className="aspect-[4/5] rounded-[1.75rem]" />
+              <img src={hisensePhoto.url} alt="Condensadora Hisense instalada sobre suporte na parede" className="aspect-[4/5] w-full rounded-[1.75rem] object-cover" loading="lazy" />
               <figcaption className="mt-3 text-sm text-ink/55">Condensadora instalada</figcaption>
             </figure>
           </Reveal>
           <Reveal className="md:col-span-7 md:mt-24" delay={120}>
             <figure>
-              <Placeholder label="Split instalado em residência (foto real)" className="aspect-[4/3] rounded-[1.75rem]" />
+              <img src={splitPhoto.url} alt="Split instalado na parede de ambiente residencial" className="aspect-[4/3] w-full rounded-[1.75rem] object-cover" loading="lazy" />
               <figcaption className="mt-3 text-sm text-ink/55">Split instalado em ambiente residencial</figcaption>
             </figure>
           </Reveal>
