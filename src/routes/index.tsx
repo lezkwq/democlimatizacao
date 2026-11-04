@@ -50,12 +50,12 @@ function Index() {
       </picture>
 
       {/* Header */}
-      <header className="relative z-20 mx-auto flex max-w-7xl items-center justify-between px-5 py-5 md:px-10 md:py-7">
+      <header className="relative z-20 mx-auto flex max-w-7xl items-center justify-between px-5 py-4 md:px-10 md:py-7">
         <a href="#" className="flex items-center gap-2.5">
           <span className="grid size-9 place-items-center rounded-full bg-background/70 text-ink backdrop-blur">
             <Snowflake className="size-5" strokeWidth={2.2} />
           </span>
-          <span className="font-display text-lg font-semibold tracking-tight">
+          <span className="whitespace-nowrap font-display text-base sm:text-lg font-semibold tracking-tight">
             Neo <span className="font-medium opacity-70">Climatização</span>
           </span>
         </a>
@@ -100,7 +100,7 @@ function Index() {
       </header>
 
       {/* Mobile content: upper free area */}
-      <div className="relative z-10 px-6 pt-4 text-center md:hidden">
+      <div className="relative z-10 px-6 pt-1 text-center md:hidden">
         <HeroText />
       </div>
       <div className="absolute inset-x-0 bottom-6 z-10 flex justify-center md:hidden">
@@ -108,8 +108,8 @@ function Index() {
       </div>
 
       {/* Desktop content: bottom-left text, bottom-right CTA */}
-      <div className="absolute inset-x-0 bottom-0 z-10 mx-auto hidden max-w-7xl items-end justify-between px-10 pb-12 md:flex">
-        <div className="max-w-[min(30vw,420px)] text-left">
+      <div className="absolute inset-x-0 bottom-0 z-10 hidden items-end justify-between px-[6vw] pb-[4vh] md:flex">
+        <div className="max-w-[27vw] text-left">
           <HeroText desktop />
         </div>
         <div className="flex max-w-[26vw] animate-rise flex-col items-end gap-4 [animation-delay:300ms]">
@@ -123,19 +123,19 @@ function Index() {
 function HeroText({ desktop = false }: { desktop?: boolean }) {
   return (
     <div className="animate-rise">
-      <h1 className="font-display text-[1.9rem] font-semibold leading-[1.08] tracking-tight md:text-[clamp(2rem,3vw,3rem)]">
+      <h1 className="font-display text-[1.7rem] font-semibold leading-[1.08] tracking-tight md:text-[clamp(1.6rem,2.3vw,2.6rem)]">
         O conforto ideal para todos os ambientes.
       </h1>
-      <p className="mx-auto mt-4 max-w-sm text-[0.95rem] leading-relaxed opacity-80 md:mx-0 md:text-base">
+      <p className="mx-auto mt-3 max-w-sm text-sm md:mt-4 md:max-w-[24vw] md:text-[clamp(0.85rem,1vw,1rem)] leading-relaxed opacity-80 md:mx-0 md:text-base">
         Instalação, manutenção e higienização de ar-condicionado, além de assistência técnica em
         refrigeração, em Camboriú e região.
       </p>
-      <div className={desktop ? "mt-7" : "mt-6 flex justify-center"}>
+      <div className={desktop ? "mt-7" : "mt-4 flex justify-center"}>
         <a
           href={WHATSAPP}
           target="_blank"
           rel="noopener noreferrer"
-          className="group inline-flex items-center gap-2 rounded-full bg-cta px-7 py-3.5 font-semibold text-cta-foreground shadow-[var(--shadow-cta)] transition-all duration-300 hover:-translate-y-0.5 hover:brightness-105"
+          className="group inline-flex items-center gap-2 rounded-full bg-cta px-6 py-3 font-semibold md:px-7 md:py-3.5 text-cta-foreground shadow-[var(--shadow-cta)] transition-all duration-300 hover:-translate-y-0.5 hover:brightness-105"
         >
           Solicitar orçamento
           <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
