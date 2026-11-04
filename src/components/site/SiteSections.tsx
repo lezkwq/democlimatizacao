@@ -7,13 +7,14 @@ import {
   MapPin,
   Wind,
   Instagram,
-  MessageCircle,
   Plus,
   Snowflake,
 } from "lucide-react";
 import { wa, MSG, WHATSAPP_DISPLAY } from "@/lib/whatsapp";
 import hisensePhoto from "@/assets/hisense-condensadora-instalada.jpg.asset.json";
 import splitPhoto from "@/assets/split-instalado-residencia.jpg.asset.json";
+import logo from "@/assets/neo-logo.png.asset.json";
+import { WhatsAppIcon } from "@/components/site/WhatsAppIcon";
 
 /* ---------- primitives ---------- */
 
@@ -86,7 +87,7 @@ function CtaButton({ href, children, variant = "cta" }: { href: string; children
       className={`group inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink ${styles}`}
     >
       {children}
-      <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
+      {href.startsWith("https://wa.me/") ? <WhatsAppIcon className="size-4 shrink-0" /> : <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />}
     </a>
   );
 }
@@ -100,7 +101,7 @@ function TextLink({ href, children }: { href: string; children: ReactNode }) {
       className="group inline-flex items-center gap-1.5 text-sm font-semibold text-ink underline-offset-4 hover:underline"
     >
       {children}
-      <ArrowUpRight className="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+      {href.startsWith("https://wa.me/") ? <WhatsAppIcon className="size-4 shrink-0 text-whatsapp" /> : <ArrowUpRight className="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />}
     </a>
   );
 }
@@ -252,7 +253,7 @@ function Refrigeracao() {
                       <h3 className="font-display text-base font-semibold md:text-xl">{r.t}</h3>
                       <p className="mt-1 text-xs text-navy-foreground/60 md:text-sm">{r.d}</p>
                     </div>
-                    <ArrowUpRight className="size-5 shrink-0 text-cta transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                    <WhatsAppIcon className="size-5 shrink-0 text-whatsapp" />
                   </div>
                 </a>
               </Reveal>
@@ -566,12 +567,7 @@ function Footer() {
       <div className={container}>
         <div className="grid gap-12 md:grid-cols-12">
           <div className="md:col-span-5">
-            <div className="flex items-center gap-2.5">
-              <span className="grid size-9 place-items-center rounded-full bg-navy-foreground/10">
-                <Snowflake className="size-5" />
-              </span>
-              <span className="font-display text-lg font-semibold">Neo Climatização e Refrigeração</span>
-            </div>
+            <img src={logo.url} alt="Neo Climatização e Refrigeração" width={1159} height={699} className="w-56 max-w-full" loading="lazy" />
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-navy-foreground/65">
               Instalação, manutenção, higienização e conserto de ar-condicionado. Assistência técnica em geladeiras, freezers, máquinas de lavar e expositores refrigerados.
             </p>
@@ -591,7 +587,7 @@ function Footer() {
             <ul className="mt-4 space-y-2.5 text-sm text-navy-foreground/80">
               <li>
                 <a href={wa(MSG.geral)} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-navy-foreground">
-                  <MessageCircle className="size-4" /> {WHATSAPP_DISPLAY}
+                  <WhatsAppIcon className="size-4 text-whatsapp" /> {WHATSAPP_DISPLAY}
                 </a>
               </li>
               <li>
@@ -632,9 +628,9 @@ function FloatingWhatsApp() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Conversar no WhatsApp"
-      className={`fixed bottom-5 right-5 z-50 grid size-14 place-items-center rounded-full bg-whatsapp text-background shadow-[var(--shadow-soft)] transition-all duration-500 hover:scale-105 ${show ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-6 opacity-0"}`}
+      className={`fixed bottom-5 right-5 z-50 grid size-14 place-items-center rounded-full bg-whatsapp text-whatsapp-foreground shadow-[var(--shadow-soft)] transition-all duration-500 hover:scale-105 ${show ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-6 opacity-0"}`}
     >
-      <MessageCircle className="size-6" />
+      <WhatsAppIcon className="size-6" />
     </a>
   );
 }

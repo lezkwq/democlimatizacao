@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { Menu, X, Star, ArrowRight, MessageCircle, Snowflake } from "lucide-react";
+import { Menu, X, Star } from "lucide-react";
+import { WhatsAppIcon } from "@/components/site/WhatsAppIcon";
+import logo from "@/assets/neo-logo.png.asset.json";
 import { SiteSections } from "@/components/site/SiteSections";
 import desktopBg from "@/assets/hero-desktop.webp.asset.json";
 import mobileBg from "@/assets/hero-mobile-v2.webp.asset.json";
@@ -63,7 +65,7 @@ function Index() {
 
   return (
     <>
-    <section id="inicio" className="relative min-h-svh overflow-hidden bg-sky font-sans text-ink">
+    <section id="inicio" className="neo-hero relative min-h-svh overflow-hidden bg-sky font-sans text-ink">
       <picture>
         <source media="(min-width: 768px)" srcSet={desktopBg.url} width={1672} height={941} />
         <img
@@ -73,19 +75,14 @@ function Index() {
           alt="Ar-condicionado split com controle remoto e indicador de temperatura"
           fetchPriority="high"
           decoding="async"
-          className="absolute inset-0 h-full w-full animate-fade object-cover object-center"
+          className="neo-hero-image absolute inset-0 h-full w-full animate-fade object-cover object-center"
         />
       </picture>
 
       {/* Header */}
-      <header className="relative z-20 mx-auto flex max-w-7xl items-center justify-between px-5 py-4 md:px-10 md:py-7">
-        <a href="#inicio" className="flex items-center gap-2.5">
-          <span className="grid size-9 place-items-center rounded-full bg-background/70 text-ink backdrop-blur">
-            <Snowflake className="size-5" strokeWidth={2.2} />
-          </span>
-          <span className="whitespace-nowrap font-display text-base sm:text-lg font-semibold tracking-tight">
-            Neo <span className="font-medium opacity-70">Climatização</span>
-          </span>
+      <header className="relative z-20 mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center justify-between px-5 py-4 md:flex md:px-10 md:py-7">
+        <a href="#inicio" aria-label="Neo Climatização — Início" className="min-w-0 md:w-[232px]">
+          <img src={logo.url} alt="Neo Climatização" width={1159} height={699} className="w-36 max-w-full md:w-36" />
         </a>
 
         <nav className="hidden items-center gap-9 text-sm font-medium md:flex">
@@ -104,7 +101,7 @@ function Index() {
             aria-label="WhatsApp"
             className="inline-flex size-10 items-center justify-center gap-2 rounded-full border sm:size-auto border-ink/25 bg-glass sm:px-4 sm:py-2 text-sm font-semibold backdrop-blur transition-colors hover:bg-background/70"
           >
-            <MessageCircle className="size-4" />
+            <WhatsAppIcon className="size-4 text-whatsapp" />
             <span className="hidden sm:inline">(47) 99946-1931</span>
                       </a>
           <button
@@ -168,7 +165,7 @@ function HeroText({ desktop = false }: { desktop?: boolean }) {
           className="group inline-flex items-center gap-2 rounded-full bg-cta px-6 py-3 font-semibold md:px-7 md:py-3.5 text-cta-foreground shadow-[var(--shadow-cta)] transition-all duration-300 hover:-translate-y-0.5 hover:brightness-105"
         >
           Solicitar orçamento
-          <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
+          <WhatsAppIcon className="size-4 shrink-0" />
         </a>
       </div>
     </div>
