@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Menu, X, Star, ArrowRight, MessageCircle, Snowflake } from "lucide-react";
 import { SiteSections } from "@/components/site/SiteSections";
 import desktopBg from "@/assets/hero-desktop.webp.asset.json";
-import mobileBg from "@/assets/hero-mobile.webp.asset.json";
+import mobileBg from "@/assets/hero-mobile-v2.webp.asset.json";
 
 const WHATSAPP =
   "https://wa.me/5547999461931?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento.";
@@ -128,11 +128,11 @@ function Index() {
       </header>
 
       {/* Mobile content: upper free area */}
-      <div className="relative z-10 px-6 pt-1 text-center md:hidden">
+      <div className="relative z-10 px-6 pt-[6svh] text-center md:hidden">
         <HeroText />
-      </div>
-      <div className="absolute inset-x-0 bottom-6 z-10 flex justify-center md:hidden">
-        <Rating />
+        <div className="mt-5 flex justify-center">
+          <Rating />
+        </div>
       </div>
 
       {/* Desktop content: bottom-left text, bottom-right CTA */}
@@ -153,7 +153,7 @@ function Index() {
 function HeroText({ desktop = false }: { desktop?: boolean }) {
   return (
     <div className="animate-rise">
-      <h1 className="font-display text-[1.7rem] font-semibold leading-[1.08] tracking-tight md:text-[clamp(1.6rem,2.3vw,2.6rem)]">
+      <h1 className="font-display text-[2rem] font-semibold leading-[1.08] tracking-tight md:text-[clamp(1.6rem,2.3vw,2.6rem)]">
         O conforto ideal para todos os ambientes.
       </h1>
       <p className="mx-auto mt-3 max-w-sm text-sm md:mt-4 md:max-w-[24vw] md:text-[clamp(0.85rem,1vw,1rem)] leading-relaxed opacity-80 md:mx-0 md:text-base">
