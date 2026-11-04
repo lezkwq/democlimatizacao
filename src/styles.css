@@ -45,6 +45,7 @@
   --color-navy: var(--navy);
   --color-navy-foreground: var(--navy-foreground);
   --color-whatsapp: var(--whatsapp);
+  --color-whatsapp-foreground: var(--whatsapp-foreground);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
@@ -89,7 +90,9 @@
   --mist: oklch(0.965 0.018 233);
   --navy: oklch(0.24 0.065 252);
   --navy-foreground: oklch(0.96 0.015 233);
-  --whatsapp: oklch(0.72 0.17 150);
+  --whatsapp: oklch(0.7597 0.2055 149.08);
+  --whatsapp-foreground: oklch(1 0 0);
+  --hero-mobile-fill: oklch(0.8405 0.089 234.4);
   --shadow-soft: 0 30px 60px -40px oklch(0.3 0.08 250 / 0.45);
   --shadow-cta: 0 14px 30px -12px oklch(0.6 0.15 75 / 0.6);
   --background: oklch(1 0 0);
@@ -173,6 +176,21 @@
 }
 
 html { scroll-behavior: smooth; scroll-padding-top: 1rem; }
+@media (max-width: 767px) {
+  .neo-hero {
+    --hero-image-offset: clamp(140px, calc(510px - 93vw), 220px);
+    min-height: max(100svh, calc(100vw * 1672 / 941 + var(--hero-image-offset)));
+    background-color: var(--hero-mobile-fill);
+  }
+  .neo-hero-image {
+    top: var(--hero-image-offset);
+    bottom: auto;
+    height: auto;
+    object-fit: contain;
+    object-position: top center;
+    mask-image: linear-gradient(to bottom, transparent, var(--whatsapp-foreground) 28px);
+  }
+}
 body { overflow-x: hidden; font-family: var(--font-sans); }
 .placeholder-stripes {
   background-color: var(--mist);
