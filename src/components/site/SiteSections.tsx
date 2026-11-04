@@ -23,7 +23,7 @@ function Reveal({ children, className = "", delay = 0 }: { children: ReactNode; 
     if (!el) return;
     const io = new IntersectionObserver(
       ([e]) => {
-        if (e.isIntersecting) {
+        if (e?.isIntersecting) {
           setVisible(true);
           io.disconnect();
         }
@@ -146,7 +146,8 @@ const CLIMA = [
 ];
 
 function Climatizacao() {
-  const [feat, ...rest] = CLIMA;
+  const feat = CLIMA[0]!;
+  const rest = CLIMA.slice(1);
   return (
     <section id="servicos" className="bg-background py-20 text-ink md:py-32">
       <div className={container}>
