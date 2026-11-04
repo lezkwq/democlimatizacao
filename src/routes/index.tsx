@@ -2,10 +2,10 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Menu, X, Star } from "lucide-react";
 import { WhatsAppIcon } from "@/components/site/WhatsAppIcon";
-import logo from "@/assets/neo-logo.png.asset.json";
+import logo from "@/assets/neo-logo.png";
 import { SiteSections } from "@/components/site/SiteSections";
-import desktopBg from "@/assets/hero-desktop.webp.asset.json";
-import mobileBg from "@/assets/hero-mobile-v2.webp.asset.json";
+import desktopBg from "@/assets/hero-desktop.png";
+import mobileBg from "@/assets/hero-mobile-v2.png";
 
 const WHATSAPP =
   "https://wa.me/5547999461931?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento.";
