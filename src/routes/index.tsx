@@ -2,10 +2,10 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Menu, X, Star } from "lucide-react";
 import { WhatsAppIcon } from "@/components/site/WhatsAppIcon";
-import logo from "@/assets/neo-logo.png.asset.json";
+import logo from "@/assets/neo-logo.png";
 import { SiteSections } from "@/components/site/SiteSections";
-import desktopBg from "@/assets/hero-desktop.webp.asset.json";
-import mobileBg from "@/assets/hero-mobile-v2.webp.asset.json";
+import desktopBg from "@/assets/hero-desktop.png";
+import mobileBg from "@/assets/hero-mobile-v2.png";
 
 const WHATSAPP =
   "https://wa.me/5547999461931?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento.";
@@ -46,8 +46,8 @@ export const Route = createFileRoute("/")({
       },
     ],
     links: [
-      { rel: "preload", as: "image", href: desktopBg.url, media: "(min-width: 768px)", fetchPriority: "high" },
-      { rel: "preload", as: "image", href: mobileBg.url, media: "(max-width: 767px)", fetchPriority: "high" },
+      { rel: "preload", as: "image", href: desktopBg, media: "(min-width: 768px)", fetchPriority: "high" },
+      { rel: "preload", as: "image", href: mobileBg, media: "(max-width: 767px)", fetchPriority: "high" },
     ],
   }),
   component: Index,
@@ -67,9 +67,9 @@ function Index() {
     <>
     <section id="inicio" className="neo-hero relative min-h-svh overflow-hidden bg-sky font-sans text-ink">
       <picture>
-        <source media="(min-width: 768px)" srcSet={desktopBg.url} width={1672} height={941} />
+        <source media="(min-width: 768px)" srcSet={desktopBg} width={1672} height={941} />
         <img
-          src={mobileBg.url}
+          src={mobileBg}
           width={941}
           height={1672}
           alt="Ar-condicionado split com controle remoto e indicador de temperatura"
@@ -82,7 +82,7 @@ function Index() {
       {/* Header */}
       <header className="relative z-20 mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center justify-between px-5 py-4 md:flex md:px-10 md:py-7">
         <a href="#inicio" aria-label="Neo Climatização — Início" className="min-w-0 md:w-[232px]">
-          <img src={logo.url} alt="Neo Climatização" width={1159} height={699} className="w-36 max-w-full md:w-36" />
+          <img src={logo} alt="Neo Climatização" width={1159} height={699} className="w-36 max-w-full md:w-36" />
         </a>
 
         <nav className="hidden items-center gap-9 text-sm font-medium md:flex">

@@ -11,9 +11,9 @@ import {
   Snowflake,
 } from "lucide-react";
 import { wa, MSG, WHATSAPP_DISPLAY } from "@/lib/whatsapp";
-import hisensePhoto from "@/assets/hisense-condensadora-instalada.jpg.asset.json";
-import splitPhoto from "@/assets/split-instalado-residencia.jpg.asset.json";
-import logo from "@/assets/neo-logo.png.asset.json";
+import hisensePhoto from "@/assets/hisense-condensadora-instalada.png";
+import splitPhoto from "@/assets/split-instalado-residencia.png";
+import logo from "@/assets/neo-logo.png";
 import { WhatsAppIcon } from "@/components/site/WhatsAppIcon";
 
 /* ---------- primitives ---------- */
@@ -69,8 +69,8 @@ function Placeholder({
 }: {
   label: string;
   className?: string;
-  src?: string;
-  mobileSrc?: string;
+  src?: string | undefined;
+  mobileSrc?: string | undefined;
   objectFit?: "cover" | "contain";
 }) {
   return (
@@ -415,13 +415,13 @@ function Trabalhos() {
         <div className="mt-12 grid gap-5 md:grid-cols-12">
           <Reveal className="md:col-span-5">
             <figure>
-              <img src={hisensePhoto.url} alt="Condensadora Hisense instalada sobre suporte na parede" className="aspect-[4/5] w-full rounded-[1.75rem] object-cover" loading="lazy" />
+              <img src={hisensePhoto} alt="Condensadora Hisense instalada sobre suporte na parede" className="aspect-[4/5] w-full rounded-[1.75rem] object-cover" loading="lazy" />
               <figcaption className="mt-3 text-sm text-ink/55">Condensadora instalada</figcaption>
             </figure>
           </Reveal>
           <Reveal className="md:col-span-7 md:mt-24" delay={120}>
             <figure>
-              <img src={splitPhoto.url} alt="Split instalado na parede de ambiente residencial" className="aspect-[4/3] w-full rounded-[1.75rem] object-cover" loading="lazy" />
+              <img src={splitPhoto} alt="Split instalado na parede de ambiente residencial" className="aspect-[4/3] w-full rounded-[1.75rem] object-cover" loading="lazy" />
               <figcaption className="mt-3 text-sm text-ink/55">Split instalado em ambiente residencial</figcaption>
             </figure>
           </Reveal>
@@ -631,7 +631,7 @@ function Footer() {
       <div className={container}>
         <div className="grid gap-12 md:grid-cols-12">
           <div className="md:col-span-5">
-            <img src={logo.url} alt="Neo Climatização e Refrigeração" width={1159} height={699} className="w-56 max-w-full" loading="lazy" />
+            <img src={logo} alt="Neo Climatização e Refrigeração" width={1159} height={699} className="w-56 max-w-full" loading="lazy" />
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-navy-foreground/65">
               Instalação, manutenção, higienização e conserto de ar-condicionado. Assistência técnica em geladeiras, freezers, máquinas de lavar e expositores refrigerados.
             </p>
