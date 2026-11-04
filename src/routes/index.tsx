@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Menu, X, Star, ArrowRight, MessageCircle, Snowflake } from "lucide-react";
+import { SiteSections } from "@/components/site/SiteSections";
 import desktopBg from "@/assets/hero-desktop.webp.asset.json";
 import mobileBg from "@/assets/hero-mobile.webp.asset.json";
 
@@ -21,6 +22,27 @@ export const Route = createFileRoute("/")({
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "HVACBusiness",
+          name: "Neo Climatização e Refrigeração",
+          telephone: "+55 47 99946-1931",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "Av. Bagdá, 555 – Santa Regina",
+            addressLocality: "Camboriú",
+            addressRegion: "SC",
+            postalCode: "88345-500",
+            addressCountry: "BR",
+          },
+          aggregateRating: { "@type": "AggregateRating", ratingValue: "4.7", reviewCount: "58" },
+          areaServed: "Camboriú e região",
+        }),
+      },
+    ],
     links: [
       { rel: "preload", as: "image", href: desktopBg.url, media: "(min-width: 768px)", fetchPriority: "high" },
       { rel: "preload", as: "image", href: mobileBg.url, media: "(max-width: 767px)", fetchPriority: "high" },
@@ -29,13 +51,19 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const NAV = ["Início", "Serviços", "Sobre", "Contato"];
+const NAV = [
+  { label: "Início", href: "#inicio" },
+  { label: "Serviços", href: "#servicos" },
+  { label: "Sobre", href: "#sobre" },
+  { label: "Contato", href: "#contato" },
+];
 
 function Index() {
   const [open, setOpen] = useState(false);
 
   return (
-    <main className="relative min-h-svh overflow-hidden bg-sky font-sans text-ink">
+    <>
+    <section id="inicio" className="relative min-h-svh overflow-hidden bg-sky font-sans text-ink">
       <picture>
         <source media="(min-width: 768px)" srcSet={desktopBg.url} width={1672} height={941} />
         <img
@@ -51,7 +79,7 @@ function Index() {
 
       {/* Header */}
       <header className="relative z-20 mx-auto flex max-w-7xl items-center justify-between px-5 py-4 md:px-10 md:py-7">
-        <a href="#" className="flex items-center gap-2.5">
+        <a href="#inicio" className="flex items-center gap-2.5">
           <span className="grid size-9 place-items-center rounded-full bg-background/70 text-ink backdrop-blur">
             <Snowflake className="size-5" strokeWidth={2.2} />
           </span>
@@ -62,8 +90,8 @@ function Index() {
 
         <nav className="hidden items-center gap-9 text-sm font-medium md:flex">
           {NAV.map((n) => (
-            <a key={n} href="#" className="opacity-75 transition-opacity hover:opacity-100">
-              {n}
+            <a key={n.href} href={n.href} className="opacity-75 transition-opacity hover:opacity-100">
+              {n.label}
             </a>
           ))}
         </nav>
@@ -91,8 +119,8 @@ function Index() {
         {open && (
           <nav className="absolute inset-x-5 top-[4.5rem] flex animate-rise flex-col rounded-2xl bg-background/90 p-2 shadow-lg backdrop-blur md:hidden">
             {NAV.map((n) => (
-              <a key={n} href="#" onClick={() => setOpen(false)} className="rounded-xl px-4 py-3 font-medium hover:bg-sky/30">
-                {n}
+              <a key={n.href} href={n.href} onClick={() => setOpen(false)} className="rounded-xl px-4 py-3 font-medium hover:bg-sky/30">
+                {n.label}
               </a>
             ))}
           </nav>
@@ -116,7 +144,9 @@ function Index() {
           <Rating />
         </div>
       </div>
-    </main>
+    </section>
+    <SiteSections />
+    </>
   );
 }
 
