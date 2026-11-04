@@ -69,8 +69,8 @@ function Placeholder({
 }: {
   label: string;
   className?: string;
-  src?: string;
-  mobileSrc?: string;
+  src?: string | undefined;
+  mobileSrc?: string | undefined;
   objectFit?: "cover" | "contain";
 }) {
   return (
