@@ -43,16 +43,45 @@ function Reveal({ children, className = "", delay = 0 }: { children: ReactNode; 
   );
 }
 
-function Placeholder({ label, className = "" }: { label: string; className?: string }) {
+const servicePhotos: Record<string, string> = {
+  "Manutenção de ar-condicionado":
+    "/images/codex-clipboard-09c08d1d-8112-4259-8e85-115a021a28e1.jpg",
+  "Mudança de local do aparelho":
+    "/images/codex-clipboard-45f7887c-8cea-455c-b2fa-a0b785d22eec.jpg",
+  "Carga de gás refrigerante": "/images/codex-clipboard-3df85b67-2f31-4f2b-bda9-36155f7350ff.jpg",
+  "Conserto de máquina de lavar":
+    "/images/codex-clipboard-04ee32fc-a7f1-4fed-b6ae-0d06face73c4.jpg",
+  "Higienização de ar-condicionado":
+    "/images/codex-clipboard-ae4714ba-275c-4c1d-a73d-1a3c0e276bde.jpg",
+};
+
+function Placeholder({
+  label,
+  className = "",
+  src,
+}: {
+  label: string;
+  className?: string;
+  src?: string;
+}) {
   return (
     <div
-      role="img"
-      aria-label={`Espaço reservado: ${label}`}
-      className={`placeholder-stripes relative overflow-hidden rounded-2xl ${className}`}
+      role={src ? undefined : "img"}
+      aria-label={src ? undefined : `Espaço reservado: ${label}`}
+      className={`${src ? "" : "placeholder-stripes"} relative overflow-hidden rounded-2xl ${className}`}
     >
-      <span className="absolute bottom-3 left-3 rounded-full bg-background/85 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.14em] text-ink/60 backdrop-blur">
-        IMAGEM: {label}
-      </span>
+      {src ? (
+        <img
+          src={src}
+          alt={label}
+          className="absolute inset-0 h-full w-full object-cover"
+          loading="lazy"
+        />
+      ) : (
+        <span className="absolute bottom-3 left-3 rounded-full bg-background/85 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.14em] text-ink/60 backdrop-blur">
+          IMAGEM: {label}
+        </span>
+      )}
     </div>
   );
 }
@@ -182,7 +211,11 @@ function Climatizacao() {
           {rest.slice(0, 2).map((s, i) => (
             <Reveal key={s.t} delay={i * 100} className="md:col-span-5">
               <article className="grid h-full grid-cols-[1fr_auto] gap-5 rounded-3xl border border-ink/10 p-6 md:grid-cols-[7.5rem_1fr]">
-                <Placeholder label={s.img} className="order-2 aspect-square w-24 md:order-none md:w-full" />
+                <Placeholder
+                  label={s.img}
+                  src={servicePhotos[s.img]}
+                  className="order-2 aspect-square w-24 md:order-none md:w-full"
+                />
                 <div className="flex flex-col">
                   <h3 className="font-display text-lg font-semibold">{s.t}</h3>
                   <p className="mt-1.5 text-sm text-ink/65">{s.d}</p>
@@ -197,7 +230,7 @@ function Climatizacao() {
           {rest.slice(2).map((s, i) => (
             <Reveal key={s.t} delay={i * 100} className="md:col-span-4">
               <article className="flex h-full flex-col rounded-3xl border border-ink/10 p-6">
-                <Placeholder label={s.img} className="aspect-[16/10]" />
+                <Placeholder label={s.img} src={servicePhotos[s.img]} className="aspect-[16/10]" />
                 <span className="mt-6 font-mono text-xs text-ink/40">0{i + 4}</span>
                 <h3 className="mt-1 font-display text-lg font-semibold">{s.t}</h3>
                 <p className="mt-1.5 text-sm text-ink/65">{s.d}</p>
@@ -247,7 +280,11 @@ function Refrigeracao() {
                   rel="noopener noreferrer"
                   className="group block overflow-hidden rounded-3xl bg-navy-foreground/5 ring-1 ring-navy-foreground/10 transition-colors hover:bg-navy-foreground/10"
                 >
-                  <Placeholder label={r.img} className="aspect-[4/5] rounded-none opacity-90" />
+                  <Placeholder
+                    label={r.img}
+                    src={servicePhotos[r.img]}
+                    className="aspect-[4/5] rounded-none opacity-90"
+                  />
                   <div className="flex items-end justify-between gap-2 p-4 md:p-6">
                     <div>
                       <h3 className="font-display text-base font-semibold md:text-xl">{r.t}</h3>
@@ -273,7 +310,11 @@ function Sobre() {
       <div className={`${container} grid items-center gap-12 md:grid-cols-12 md:gap-16`}>
         <Reveal className="md:col-span-5">
           <div className="relative">
-            <Placeholder label="Profissional da Neo trabalhando" className="aspect-[4/5] rounded-[2rem] shadow-[var(--shadow-soft)]" />
+            <Placeholder
+              label="Registro da fachada da Neo Climatização e Refrigeração, sem indicação de endereço atual"
+              src="/images/codex-clipboard-4d577153-61f4-4fe3-abed-63ed94b4368d.jpg"
+              className="aspect-[4/5] rounded-[2rem] shadow-[var(--shadow-soft)]"
+            />
             <div className="absolute -bottom-6 -right-3 rounded-2xl bg-navy px-5 py-4 text-navy-foreground shadow-[var(--shadow-soft)] md:-right-8">
               <p className="text-xs uppercase tracking-[0.18em] text-navy-foreground/60">Localização</p>
               <p className="mt-1 font-display font-semibold">Camboriú · SC</p>
