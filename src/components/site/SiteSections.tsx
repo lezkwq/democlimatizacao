@@ -12,6 +12,8 @@ import {
   Snowflake,
 } from "lucide-react";
 import { wa, MSG, WHATSAPP_DISPLAY } from "@/lib/whatsapp";
+import hisensePhoto from "@/assets/hisense-condensadora-instalada.jpg.asset.json";
+import splitPhoto from "@/assets/split-instalado-residencia.jpg.asset.json";
 
 /* ---------- primitives ---------- */
 
