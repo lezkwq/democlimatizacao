@@ -93,6 +93,7 @@
   --whatsapp: oklch(0.7597 0.2055 149.08);
   --whatsapp-foreground: oklch(1 0 0);
   --hero-mobile-fill: oklch(0.8405 0.089 234.4);
+  --hero-desktop-fill: oklch(0.8261 0.0964 233.5);
   --shadow-soft: 0 30px 60px -40px oklch(0.3 0.08 250 / 0.45);
   --shadow-cta: 0 14px 30px -12px oklch(0.6 0.15 75 / 0.6);
   --background: oklch(1 0 0);
@@ -176,6 +177,20 @@
 }
 
 html { scroll-behavior: smooth; scroll-padding-top: 1rem; }
+@media (min-width: 768px) {
+  .neo-hero {
+    background-color: var(--hero-desktop-fill);
+  }
+  .neo-hero-image {
+    /* Keep the whole composition at its native ratio, including the remote. */
+    top: calc((100% - 100vw * 941 / 1672) / 2 - clamp(64px, 8vh, 96px));
+    bottom: auto;
+    height: auto;
+    object-fit: contain;
+    object-position: top center;
+    mask-image: linear-gradient(to bottom, transparent, var(--whatsapp-foreground) 24px, var(--whatsapp-foreground) calc(100% - 24px), transparent);
+  }
+}
 @media (max-width: 767px) {
   .neo-hero {
     --hero-image-offset: clamp(140px, calc(510px - 93vw), 220px);
