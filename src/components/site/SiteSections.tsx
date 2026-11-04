@@ -44,6 +44,11 @@ function Reveal({ children, className = "", delay = 0 }: { children: ReactNode; 
 }
 
 const servicePhotos: Record<string, string> = {
+  "Instalação de ar-condicionado": "/images/fd8424a8-3fd8-4b43-aa0e-b661f8dddc29.jpg",
+  "Conserto de ar-condicionado": "/images/c3eeba0f-bed9-4f8d-b0ab-f9a8ea94998c.jpg",
+  "Conserto de geladeira": "/images/df4b5030-996a-4fe9-8e8c-e6341d8e4346.jpg",
+  "Conserto de freezer": "/images/62ecefc0-25b8-4f53-bc82-51345ccfce2d.jpg",
+  "Manutenção de expositor refrigerado": "/images/09054cfc-dcdd-4918-b665-147d87863d27.jpg",
   "Manutenção de ar-condicionado":
     "/images/codex-clipboard-09c08d1d-8112-4259-8e85-115a021a28e1.jpg",
   "Mudança de local do aparelho":
@@ -59,10 +64,14 @@ function Placeholder({
   label,
   className = "",
   src,
+  mobileSrc,
+  objectFit = "cover",
 }: {
   label: string;
   className?: string;
   src?: string;
+  mobileSrc?: string;
+  objectFit?: "cover" | "contain";
 }) {
   return (
     <div
@@ -71,12 +80,16 @@ function Placeholder({
       className={`${src ? "" : "placeholder-stripes"} relative overflow-hidden rounded-2xl ${className}`}
     >
       {src ? (
-        <img
-          src={src}
-          alt={label}
-          className="absolute inset-0 h-full w-full object-cover"
-          loading="lazy"
-        />
+        <picture>
+          {mobileSrc && <source media="(max-width: 767px)" srcSet={mobileSrc} />}
+          <img
+            src={src}
+            alt={label}
+            className="absolute inset-0 h-full w-full object-cover"
+            style={{ objectFit }}
+            loading="lazy"
+          />
+        </picture>
       ) : (
         <span className="absolute bottom-3 left-3 rounded-full bg-background/85 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.14em] text-ink/60 backdrop-blur">
           IMAGEM: {label}
@@ -197,7 +210,12 @@ function Climatizacao() {
           {/* Featured */}
           <Reveal className="md:col-span-7 md:row-span-2">
             <article className="group flex h-full flex-col overflow-hidden rounded-3xl bg-mist">
-              <Placeholder label={feat.img} className="aspect-[4/3] rounded-none md:aspect-auto md:flex-1" />
+              <Placeholder
+                label={feat.img}
+                src={servicePhotos[feat.img]}
+                objectFit="contain"
+                className="aspect-[4/3] rounded-none md:aspect-auto md:flex-1"
+              />
               <div className="flex flex-col gap-4 p-7 md:flex-row md:items-end md:justify-between md:p-9">
                 <div>
                   <h3 className="font-display text-2xl font-semibold md:text-3xl">{feat.t}</h3>
@@ -351,7 +369,12 @@ function Higienizacao() {
     <section className="bg-sky py-20 text-ink md:py-28">
       <div className={container}>
         <div className="grid overflow-hidden rounded-[2rem] bg-background md:grid-cols-2">
-          <Placeholder label="Higienização de ar-condicionado" className="aspect-[4/3] rounded-none md:aspect-auto md:min-h-[560px]" />
+          <Placeholder
+            label="Higienização de ar-condicionado"
+            src="/images/57786ddc-013a-4758-a0e3-5666676b6747.jpg"
+            mobileSrc="/images/14d237c6-d9cb-411d-8897-163c86037496.jpg"
+            className="aspect-[4/3] rounded-none md:aspect-auto md:min-h-[560px]"
+          />
           <Reveal className="flex flex-col justify-center p-8 md:p-14">
             <Eyebrow n="04">Higienização</Eyebrow>
             <H2 className="mt-5 md:text-[2.75rem]">Seu ar-condicionado precisa de atenção?</H2>
