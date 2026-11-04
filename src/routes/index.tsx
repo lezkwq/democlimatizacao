@@ -74,7 +74,7 @@ function Index() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="WhatsApp"
-            className="inline-flex size-10 items-center justify-center gap-2 rounded-full border sm:size-auto border-ink/25 bg-glass px-4 py-2 text-sm font-semibold backdrop-blur transition-colors hover:bg-background/70"
+            className="inline-flex size-10 items-center justify-center gap-2 rounded-full border sm:size-auto border-ink/25 bg-glass sm:px-4 sm:py-2 text-sm font-semibold backdrop-blur transition-colors hover:bg-background/70"
           >
             <MessageCircle className="size-4" />
             <span className="hidden sm:inline">(47) 99946-1931</span>
